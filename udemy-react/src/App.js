@@ -2,11 +2,8 @@ import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Expense from "./components/Expenses/Expense";
 import { NewLifecycle } from "react";
 import NewExpense from "./components/newExpense/newExpense";
-function App() {
-  const addExpenseHandelar = expense => {
-    console.log(expense)
-  }
-  const expenses = [
+import {useState} from 'react'
+  const dumyExpenses = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -27,6 +24,14 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+function App() {
+  const [expenses, setExpense] = useState(dumyExpenses)
+  const addExpenseHandelar = expense => {
+    setExpense(prev => {
+      return  [expense, ...expenses];
+    });
+  }
   return (
     <div>
       <NewExpense onAddExpense = {addExpenseHandelar} />
