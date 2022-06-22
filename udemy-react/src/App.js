@@ -1,6 +1,11 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Expense from "./components/Expenses/Expense";
+import { NewLifecycle } from "react";
+import NewExpense from "./components/newExpense/newExpense";
 function App() {
+  const addExpenseHandelar = expense => {
+    console.log(expense)
+  }
   const expenses = [
     {
       id: "e1",
@@ -23,7 +28,10 @@ function App() {
     },
   ];
   return (
-    <Expense expenses={expenses}/>
+    <div>
+      <NewExpense onAddExpense = {addExpenseHandelar} />
+      <Expense expenses={expenses} />
+    </div>
   );
 }
 
